@@ -1,8 +1,10 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import QTimer
+from PyQt5.QtCore import QTimer, pyqtSlot
 
 from App.controller.curso import listarCursos
+from App.controller.pessoa import buscaPessoas
+from App.controller.sala import listarSala
 
 
 
@@ -10,7 +12,7 @@ class ReservaInterface(QWidget):
     def __init__(self):
         super().__init__()
         loadUi('App/view/ui/reserva.ui',self)
-        self.popular()
+        self.popularJanela()
 
     def getDados(self)->dict:
         """Pegando o dados na interface e retornando os valores"""
@@ -31,16 +33,31 @@ class ReservaInterface(QWidget):
                  "observações":observacao}
         return dados
     
+    @pyqtSlot()
+    def on_btnFazerReserva_clicked(self):
+        
+        
+        
+        
+
     def popularJanela(self):
-        pessoas = ['samuel', 'otavio', 'gabriel', 'bruno', 'richard', 'max', 'camila']
-        sala = ['j01', 'j02', 'j03']
-        curso = ['ds', 'culinaria', 'beleza']
-        self.nomeDocente.addItems(pessoas)
+        self.comboBoxCurso()
+        self.comboBoxPessoa()
+        self.comboBoxSala()
+
+    def comboBoxCurso(self):
+        curso = listarCursos().keys()
         self.cursoReserva.addItems(curso)
+
+    def comboBoxPessoa(self):
+        pessoa = buscaPessoas().keys()
+        self.nomeDocente.addItems(pessoa)
+
+    def comboBoxSala(self):
+        sala = listarSala().keys()
         self.salaReserva.addItems(sala)
 
-    def on_btnFazerReserva_clicked(self):
-        listarCursos()
+        
 
 
         
@@ -54,5 +71,3 @@ class ReservaInterface(QWidget):
 
     def limparCampos(self, campo):
         campo.clear()
-
-
