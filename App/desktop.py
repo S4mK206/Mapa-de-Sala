@@ -1,13 +1,12 @@
 from PyQt5.QtWidgets import QApplication
-from App.view.login import LoginInterface
+# from App.view.login import LoginInterface
 from App.view.home import HomePrincipal
 
 
 app = QApplication([])
-login = LoginInterface()
+# login = LoginInterface()
 
-if login.exec_():
-    main = HomePrincipal()
-    main.show()
-    app.exec_()
-        
+main = HomePrincipal()
+main.show()
+app.exec_()
+    

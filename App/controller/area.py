@@ -11,3 +11,4 @@ def listarAreas() -> dict:
     listaNome = {i[1]:i[0] for i in todas_areas}
     return listaNome
 
+

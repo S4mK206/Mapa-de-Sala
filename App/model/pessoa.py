@@ -77,6 +77,14 @@ class Pessoa:
         
         except Exception as e:
             return False
+        
+    def buscarPessoas(self):
+        self.__banco.conectar()
+
+        query = 'SELECT idPessoa, nome FROM pessoa;'
+        resposta = self.__banco.buscarTodos(query)
+        self.__banco.desconectar()
+        return resposta
 
 if __name__ == "__main__":
 
