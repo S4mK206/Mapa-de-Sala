@@ -34,11 +34,13 @@ def validarCadastro(dados, diasValidos):
                 if validar:
                     listaDias.append(validar[0])
             diaAtual += timedelta(days=1)
-        if listaDias != []:
-            return listaDias
-        else:
-            return False
-    return True
+
+    return listaDias
+    #     if listaDias != []:
+    #         return listaDias
+    #     else:
+    #         return False
+    # return True
 
 def trocar_reserva(dados1, dados2):
     if Reserva.atualizar(dados1['idLogin'], dados1['idPessoa'], dados1['idcurso'], dados1['idSala'], dados1['dia'], dados1['inicioCurso'], dados1['fimCurso'], dados1['observações'],  dados1['idReserva']):
