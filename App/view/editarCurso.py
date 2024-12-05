@@ -18,7 +18,7 @@ class EditarCurso(QWidget):
 
     def popularJanela(self):
         self.comboxArea()
-        self.comboxCurso()
+        # self.comboxCurso()
 
     @pyqtSlot()
     def on_btnEditarCurso_clicked(self):
@@ -32,10 +32,10 @@ class EditarCurso(QWidget):
         self.campoArea.addItems(areas)
         print(f"Lista de Areas: {self.dicionarioDeAreas}")
 
-    def comboxCurso(self):
-        cursos = self.dicionarioDeCursos.keys()
-        self.alterarCurso.addItem(cursos)
-        print(f"Lista de Cursos: {self.dicionarioDeCursos}")
+    # def comboxCurso(self):
+    #     cursos = self.dicionarioDeCursos.keys()
+    #     self.alterarCurso.addItem(cursos)
+    #     print(f"Lista de Cursos: {self.dicionarioDeCursos}")
 
     def getEditarCurso(self):
         nome = self.nomeCurso.text().strip()
