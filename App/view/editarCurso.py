@@ -19,8 +19,7 @@ class EditarCurso(QWidget):
 
     def popularJanela(self):
         self.comboxArea()
-        self.autoCompleteOferta()
-        # self.comboxCurso()
+        self.comboOferta()
 
     @pyqtSlot()
     def on_btnEditarCurso_clicked(self):
@@ -34,10 +33,9 @@ class EditarCurso(QWidget):
         self.campoArea.addItems(areas)
         print(f"Lista de Areas: {self.dicionarioDeAreas}")
 
-    # def comboxCurso(self):
-    #     cursos = self.dicionarioDeCursos.keys()
-    #     self.alterarCurso.addItem(cursos)
-    #     print(f"Lista de Cursos: {self.dicionarioDeCursos}")
+    def comboOferta(self):
+        dados = [str(row[0]) for row in listarOfertas()]
+        self.ofertaCurso.addItems(dados)
 
     def getEditarCurso(self):
         nome = self.nomeCurso.text().strip()
@@ -52,11 +50,7 @@ class EditarCurso(QWidget):
         return(nome, oferta, periodo, carga, horas, alunos)
         # return(nome, oferta, area, periodo, carga, curso, horas, alunos)
 
-    def autoCompleteOferta(self):
-        dados = [str(row[0]) for row in listarOfertas()]
-        completer = QCompleter(dados)
-        completer.setCaseSensitivity(False)
-        self.ofertaCurso.setCompleter(completer)
+    
     
     def validandoDados(self):
         self.respostas.setText('EDITANDO...')
