@@ -14,6 +14,9 @@ def listarCursos():
     listaCursos = {i[1]:i[0] for i in todosCursos}
     return listaCursos
 
+def listarOfertas():
+    return Curso.retorna_todas_oferta()
+
 def deletarCurso(idCurso):
     if Curso.deletar(idCurso):
         return True

@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QCompleter
 from PyQt5.QtCore import QTimer, pyqtSlot
 
 from App.controller.area import listarAreas
 from App.controller.curso import listarCursos
+from App.controller.curso import listarOfertas
 
 from App.controller.curso import atualizarCurso
 from App.controller.utils import validarAcao
@@ -18,6 +19,7 @@ class EditarCurso(QWidget):
 
     def popularJanela(self):
         self.comboxArea()
+        self.autoCompleteOferta()
         # self.comboxCurso()
 
     @pyqtSlot()
@@ -49,6 +51,12 @@ class EditarCurso(QWidget):
         
         return(nome, oferta, periodo, carga, horas, alunos)
         # return(nome, oferta, area, periodo, carga, curso, horas, alunos)
+
+    def autoCompleteOferta(self):
+        dados = [str(row[0]) for row in listarOfertas()]
+        completer = QCompleter(dados)
+        completer.setCaseSensitivity(False)
+        self.ofertaCurso.setCompleter(completer)
     
     def validandoDados(self):
         self.respostas.setText('EDITANDO...')
