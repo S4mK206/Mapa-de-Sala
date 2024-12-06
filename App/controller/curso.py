@@ -9,13 +9,29 @@ def cadastrarCurso(idArea, dados):
     print('Preencha todos os campos')
     return False
 
-def listarCursos():
-    todosCursos = Curso.retorna_nomeId_cursos()
-    listaCursos = {i[1]:i[0] for i in todosCursos}
-    return listaCursos
+def infosCursos(idCurso):
+    return Curso.retorna_todas_infos_curso(idCurso)
 
-def listarOfertas():
-    return Curso.retorna_todas_oferta()
+def buscarCursosId(idCurso=1):
+    if not isinstance(idCurso, int):
+        return {"error": "ID inválido. Deve ser um número inteiro."}
+    
+    try:
+        resultado = Curso.retorna_todas_infos_curso(idCurso)
+        if not resultado or len(resultado) < 7:
+            return {"error": "Curso não encontrado"}
+        return {
+            "idCurso": resultado[0],
+            "idArea": resultado[1],
+            "nome": resultado[2],
+            "oferta": resultado[3],
+            "periodo": resultado[4],
+            "cargaHoraria": resultado[5],
+            "horasDia": resultado[6],
+            "qtdAlunos": resultado[7],
+        }
+    except Exception as e:
+        return {"error": f"Erro ao buscar sala: {e}"}
 
 def deletarCurso(idCurso):
     if Curso.deletar(idCurso):

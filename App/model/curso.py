@@ -96,12 +96,14 @@ class Curso:
         return resultado
     
     @classmethod
-    def retorna_todas_oferta(cls):
+    def retorna_todas_infos_curso(cls, idCurso):
         cls.__banco.conectar()
-        query = "SELECT oferta FROM curso"
-        resultado = cls.__banco.buscarTodos(query)
+        query = "SELECT * FROM curso WHERE idCurso = %s"
+        param = [idCurso]
+        resultado = cls.__banco.buscarTodos(query, param)
         cls.__banco.desconectar()
         return resultado
+
 
     @classmethod
     def deletar(cls, idCurso):
