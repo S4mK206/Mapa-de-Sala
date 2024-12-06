@@ -88,9 +88,9 @@ class Curso:
         return resultado
     
     @classmethod
-    def retorna_nomeId_cursos(cls):
+    def retorna_ofertaId_cursos(cls):
         cls.__banco.conectar()
-        query = "SELECT idCurso, nome FROM curso"
+        query = "SELECT idCurso, oferta FROM curso"
         resultado = cls.__banco.buscarTodos(query)
         cls.__banco.desconectar()
         return resultado

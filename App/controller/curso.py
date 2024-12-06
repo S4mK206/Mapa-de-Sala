@@ -9,8 +9,13 @@ def cadastrarCurso(idArea, dados):
     print('Preencha todos os campos')
     return False
 
-def infosCursos(idCurso):
-    return Curso.retorna_todas_infos_curso(idCurso)
+def infosCursos():
+    print("reserva")
+
+def listarCurso():
+    todasSalas = Curso.retorna_ofertaId_cursos()
+    listarCursos = {i[1]:i[0] for i in todasSalas}
+    return(listarCursos)
 
 def buscarCursosId(idCurso=1):
     if not isinstance(idCurso, int):
