@@ -6,7 +6,7 @@ from App.view.home import HomePrincipal
 app = QApplication([])
 login = LoginInterface()
 
-if login.exec_():
-    main = HomePrincipal()
-    main.show()
-    app.exec_()
+# if login.exec_():
+main = HomePrincipal()
+main.show()
+app.exec_()
