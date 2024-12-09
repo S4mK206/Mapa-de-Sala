@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import QTimer, pyqtSlot
 
-from App.controller.curso import listarCurso, buscarCursosId
+from App.controller.curso import listarCurso, buscarCursosId, timedelta_to_int
 
 from PyQt5.uic import loadUi
 
@@ -30,6 +30,26 @@ class EditarCurso(QWidget):
         info = buscarCursosId(idCurso)
         nome = info['nome']
         cargaHoraria = info['cargaHoraria']
+        periodo = info['periodo']
+        area = info['idArea']
+        horasDia = info['horasDia']
+        qtdAlunos = info['qtdAlunos']
+
+        if (nome, cargaHoraria, periodo, area, horasDia, qtdAlunos):
+            
+            print("nome:", nome)
+            print("carga horaria", cargaHoraria)
+            print("periodo", periodo)
+            print("area", area)
+            print("horas por dia", horasDia)
+            print("quantidade de alunos", qtdAlunos)
+
+            self.nomeCurso.setText(nome)
+            self.cargaCurso.setValue(cargaHoraria)
+            self.periodoCurso.setCurrentText(periodo)
+            self.campoArea.setCurrentText(area)
+            self.horasPorDia.setValue(horasDia)
+            self.quantidadeAlunos.setValue(int(qtdAlunos))
 
     # def popularSala(self):
     #     idSalaCombobox = self.getIdSala()

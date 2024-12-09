@@ -100,7 +100,7 @@ class Curso:
         cls.__banco.conectar()
         query = "SELECT * FROM curso WHERE idCurso = %s"
         param = [idCurso]
-        resultado = cls.__banco.buscarTodos(query, param)
+        resultado = cls.__banco.buscar(query, param)
         cls.__banco.desconectar()
         return resultado
 
